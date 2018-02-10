@@ -2,38 +2,48 @@
     <div class="site-menubar">
         <div class="site-menubar-body">
             <ul class="nav-menu">
-                <li>
-                    <a href="javascript:void(0)"><i class="glyphicon glyphicon-home"></i><span>Home</span></a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><i class="glyphicon glyphicon-th-large"></i><span>Projects</span></a>
-                </li>
+                <router-link to="/dashboard" :class="{'nav-item-active': isHome}" tag="li"><a><i class="glyphicon glyphicon-home"></i><span>Home</span></a></router-link>
+                <router-link to="/dashboard/projects" :class="{'nav-item-active': isProjects}" tag="li"><a><i class="glyphicon glyphicon-th-large"></i><span>Projects</span></a></router-link>
+                <router-link to="/dashboard/users" activeClass="nav-item-active" tag="li"><a><i class="glyphicon glyphicon-user"></i><span>Users</span></a></router-link>
                
-                <li>
-                    <a href="javascript:void(0)"><i class="glyphicon glyphicon-user"></i><span>Users</span></a>
-                </li>
+               <template v-if="isProjectGroup">
+                   <hr />
+                    <router-link to="/dashboard/projects/12345/overview" :class="{'nav-item-active': $route.name === 'ProjectOverview'}" tag="li"><a><i class="glyphicon glyphicon-stats"></i><span>Overview</span></a></router-link>
+                    
+                    <li>
+                        <a class="nav-item-active" href="javascript:void(0)"><i class="glyphicon glyphicon-time"></i><span>Timeline</span></a>
+                    </li>
 
-               <hr />
+                    <li>
+                        <a href="javascript:void(0)"><i class="glyphicon glyphicon-tasks"></i><span>Tasks</span></a>
+                    </li>
 
-               <li>
-                    <a href="javascript:void(0)"><i class="glyphicon glyphicon-stats"></i><span>Overview</span></a>
-                </li>
-
-                <li>
-                    <a class="nav-item-active" href="javascript:void(0)"><i class="glyphicon glyphicon-time"></i><span>Timeline</span></a>
-                </li>
-
-                 <li>
-                    <a href="javascript:void(0)"><i class="glyphicon glyphicon-tasks"></i><span>Tasks</span></a>
-                </li>
-
-                 <li>
-                    <a href="javascript:void(0)"><i class="glyphicon glyphicon-user"></i><span>Team</span></a>
-                </li>
+                    <li>
+                        <a href="javascript:void(0)"><i class="glyphicon glyphicon-user"></i><span>Team</span></a>
+                    </li>
+               </template>               
             </ul>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    computed: {
+        isHome() {
+            return this.$route.fullPath === '/dashboard';
+        },        
+        isProjectGroup() {
+            return this.$route.meta.group === 'Project';
+        },
+        isProjects() {
+            return this.$route.name === 'Projects';
+        }
+    }
+}
+
+</script>
+
 
 <style>
 
@@ -57,7 +67,7 @@
     color: #f8f8f8;
 }
 .nav-item-active .glyphicon,
-.nav-item-active>span {
+.nav-item-active>a>span {
     color: #f8f8f8;
 }
 
