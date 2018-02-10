@@ -3,7 +3,11 @@ import Dashboard from './components/dashboard/Dashboard.vue';
 import DashboardHome from './components/dashboard/Home.vue';
 import Projects from './components/dashboard/projects/Projects.vue';
 import Users from './components/dashboard/users/Users.vue';
+
 import ProjectOverview from './components/dashboard/projects/ProjectOverview.vue';
+import ProjectTimeline from './components/dashboard/projects/ProjectTimeline.vue';
+import ProjectTasks from './components/dashboard/projects/ProjectTasks.vue';
+import ProjectTeam from './components/dashboard/projects/ProjectTeam.vue';
 
 export const routes = [
     {
@@ -41,6 +45,36 @@ export const routes = [
                 name: 'ProjectOverview',
                 meta: {
                     description: 'ProjectOverview',
+                    group: 'Project'
+                }
+            },
+            {
+                path: 'projects/:projectId/timeline',
+                alias: 'project-timeline',
+                component: ProjectTimeline,
+                name: 'ProjectTimeline',
+                meta: {
+                    description: 'ProjectTimeline',
+                    group: 'Project'
+                }
+            },
+            {
+                path: 'projects/:projectId/tasks',
+                alias: 'project-tasks',
+                component: ProjectTasks,
+                name: 'ProjectTasks',
+                meta: {
+                    description: 'ProjectTasks',
+                    group: 'Project'
+                }
+            },
+            {
+                path: 'projects/:projectId/team',
+                alias: 'project-team',
+                component: ProjectTeam,
+                name: 'ProjectTeam',
+                meta: {
+                    description: 'ProjectTeam',
                     group: 'Project'
                 }
             },

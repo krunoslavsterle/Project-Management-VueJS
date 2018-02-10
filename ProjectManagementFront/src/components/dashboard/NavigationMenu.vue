@@ -9,18 +9,9 @@
                <template v-if="isProjectGroup">
                    <hr />
                     <router-link to="/dashboard/projects/12345/overview" :class="{'nav-item-active': $route.name === 'ProjectOverview'}" tag="li"><a><i class="glyphicon glyphicon-stats"></i><span>Overview</span></a></router-link>
-                    
-                    <li>
-                        <a class="nav-item-active" href="javascript:void(0)"><i class="glyphicon glyphicon-time"></i><span>Timeline</span></a>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0)"><i class="glyphicon glyphicon-tasks"></i><span>Tasks</span></a>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0)"><i class="glyphicon glyphicon-user"></i><span>Team</span></a>
-                    </li>
+                    <router-link to="/dashboard/projects/12345/timeline" :class="{'nav-item-active': $route.name === 'ProjectTimeline'}" tag="li"><a><i class="glyphicon glyphicon-time"></i><span>Timeline</span></a></router-link>
+                    <router-link to="/dashboard/projects/12345/tasks" :class="{'nav-item-active': $route.name === 'ProjectTasks'}" tag="li"><a><i class="glyphicon glyphicon-tasks"></i><span>Tasks</span></a></router-link>
+                    <router-link to="/dashboard/projects/12345/team" :class="{'nav-item-active': $route.name === 'ProjectTeam'}" tag="li"><a><i class="glyphicon glyphicon-user"></i><span>Team</span></a></router-link>
                </template>               
             </ul>
         </div>
@@ -43,7 +34,6 @@ export default {
 }
 
 </script>
-
 
 <style>
 
