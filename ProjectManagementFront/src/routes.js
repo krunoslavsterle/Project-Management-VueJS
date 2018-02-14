@@ -1,6 +1,6 @@
 import Home from './components/home/Home.vue';
 import Dashboard from './components/dashboard/Dashboard.vue';
-import DashboardHome from './components/dashboard/Home.vue';
+import DashboardHome from './components/dashboard/home/DashboardHome.vue';
 import Projects from './components/dashboard/projects/Projects.vue';
 import Users from './components/dashboard/users/Users.vue';
 
