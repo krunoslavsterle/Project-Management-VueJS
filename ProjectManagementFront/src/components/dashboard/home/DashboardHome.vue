@@ -18,11 +18,11 @@
 
                     <div class="tab-content">
                         <div class="tab-pane" :class="{active: isActivityTab}">
-                            <pm-profile-activity></pm-profile-activity>
+                            <pm-profile-activity v-if="isActivityTab"></pm-profile-activity>
                         </div>
 
                         <div class="tab-pane" :class="{active: !isActivityTab}">
-                            <pm-profile-tasks></pm-profile-tasks>
+                            <pm-profile-tasks v-if="!isActivityTab"></pm-profile-tasks>
                         </div>
                     </div>
                 </div>

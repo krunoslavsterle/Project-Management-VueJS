@@ -9,28 +9,33 @@ export default class HomeService {
         return new Promise(function(resolve, reject) {
             setTimeout(() => {
                 console.log('ProfileModel fetched.');
-                return mock;
-            }, 1500);
-            resolve(mock);
+                resolve(mock);
+            }, 500);
         });        
     };
 
     getProfileActivitiesModel() {
         console.log('Getting ProfileActivitiesModel from API...');
 
-        setTimeout(() => {
-            console.log('ProfileActivitiesModel fetched.');
-            return this.getMockProfileActivitiesModel();
-        }, 1500);
+        const mock = this.getMockProfileActivitiesModel();
+        return new Promise(function(resolve, reject) {
+            setTimeout(() => {
+                console.log('ProfileActivitiesModel fetched.');
+                resolve(mock);
+            }, 1200);
+        });   
     };
 
     getProfileTasksModel() {
         console.log('Getting ProfileTasksModel frmo API...');
 
-        setTimeout(() => {
-            console.log('ProfileTasksModel fetched.');
-            return this.getMockProfileTasksModel();
-        }, 1500);
+        const mock = this.getMockProfileTasksModel();
+        return new Promise(function(resolve, reject) {
+            setTimeout(() => {
+                console.log('ProfileTasksModel fetched.');
+                resolve(mock);
+            }, 800);
+        });   
     }
     
     getMockProfileModel() {

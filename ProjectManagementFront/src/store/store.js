@@ -13,8 +13,14 @@ export default new Vuex.Store({
         profileTasksModel: {}
     },
     mutations: {
-        'SET_PROFILE_MODEL'(state, model) {
+        'SET_PROFILE_MODEL'(state, model) {            
             state.profileModel = model;
+        },
+        'SET_PROFILE_ACTIVITIES_MODEL'(state, model) {
+            state.profileActivitiesModel = model;
+        },
+        'SET_PROFILE_TASKS_MODEL'(state, model) {
+            state.profileTasksModel = model;
         }
     },
     actions: {
@@ -29,11 +35,41 @@ export default new Vuex.Store({
                         commit('SET_PROFILE_MODEL', data);
                     });
             }        
+        },
+        refreshProfileActivitiesModel({commit, state}) {
+            console.log('Refreshing ProfileActivitiesModel');
+
+            // Check if there is ProfileActivitiesModel and it is in sync.
+            if (!state.profileActivitiesModel || !state.profileActivitiesModel.inSync) {                
+                homeService.getProfileActivitiesModel()
+                    .then((data) => {
+                        data.inSync = true;
+                        commit('SET_PROFILE_ACTIVITIES_MODEL', data);
+                    });
+            }   
+        },
+        refreshProfileTasksModel({commit, state}) {
+            console.log('Refreshing ProfileTasksModel');
+
+            // Check if there is ProfileTasksModel and it is in sync.
+            if (!state.profileTasksModel || !state.profileTasksModel.inSync) {                
+                homeService.getProfileTasksModel()
+                    .then((data) => {
+                        data.inSync = true;
+                        commit('SET_PROFILE_TASKS_MODEL', data);
+                    });
+            }
         }
     },
     getters: {
         profileModel: state => {
             return state.profileModel;
+        },
+        profileActivitiesModel: state => {
+            return state.profileActivitiesModel;
+        },
+        profileTasksModel: state => {
+            return state.profileTasksModel;
         }
     }
 });

@@ -11,7 +11,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="task in tasks" :key="task.id">
+                <tr v-for="task in profileTasksModel" :key="task.id">
                     <td>{{ task.name }}</td>
                     <td>{{ task.project }}</td>
                     <td>{{ task.status }}</td>
@@ -25,39 +25,13 @@
 
 <script>
     export default {
-        data() {
-            return {
-                tasks: [
-                    {
-                        id: '1',
-                        name: 'Implement caching',
-                        project: 'My First Project',
-                        status: 'New',
-                        dueDate: '23/7/2017'
-                    },
-                    {
-                        id: '2',
-                        name: 'Implement ddl on Profile page',
-                        project: 'Project 1',
-                        status: 'In Progress',
-                        dueDate: '23/7/2017'
-                    },
-                    {
-                        id: '3',
-                        name: 'Code optimization',
-                        project: 'Project 1',
-                        status: 'In Progress',
-                        dueDate: '23/7/2017'
-                    },
-                    {
-                        id: '4',
-                        name: 'Implement ddl on Profile page',
-                        project: 'Project 1',
-                        status: 'In Progress',
-                        dueDate: '23/7/2017'
-                    }
-                ]
+        computed: {
+            profileTasksModel() {
+                return this.$store.getters.profileTasksModel;
             }
+        },
+        created() {
+            this.$store.dispatch('refreshProfileTasksModel');
         }
     }
 </script>
