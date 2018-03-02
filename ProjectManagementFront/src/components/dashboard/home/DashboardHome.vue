@@ -31,6 +31,7 @@
 </template>
 
 <script>
+    //import {mapActions} from 'vuex';
     import Profile from './Profile.vue';
     import ProfileActivity from './ProfileActivity.vue';
     import ProfileTasks from './ProfileTasks.vue';
@@ -41,6 +42,11 @@
                 isActivityTab: true
             }
         },
+        methods: {
+            // ...mapActions([
+            //     "refreshHomeModel"
+            // ])
+        },       
         components: {
             'pm-profile': Profile,
             'pm-profile-activity': ProfileActivity,
