@@ -10,7 +10,9 @@ export default new Vuex.Store({
     state: {
         profileModel: {},
         profileActivitiesModel: {},
-        profileTasksModel: {}
+        profileTasksModel: {},
+        projectsModel: {},
+        usersModel: {}
     },
     mutations: {
         'SET_PROFILE_MODEL'(state, model) {            
@@ -21,6 +23,12 @@ export default new Vuex.Store({
         },
         'SET_PROFILE_TASKS_MODEL'(state, model) {
             state.profileTasksModel = model;
+        },
+        'SET_PROJECTS_MODEL'(state, model) {
+            state.projectsModel = model;
+        },
+        'SET_USERS_MODEL'(state, model) {
+            state.usersModel = model;
         }
     },
     actions: {
@@ -59,6 +67,18 @@ export default new Vuex.Store({
                         commit('SET_PROFILE_TASKS_MODEL', data);
                     });
             }
+        },
+        refreshProjectsModel({commit, state}) {
+            console.log('Refreshing ProjectsModel');
+
+            // Check if there is ProjectsModel and it is in sync. 
+            if (!state.projectsModel || !state.projectsModel.inSync) {
+                homeService.getProjectsModel()
+                    .then((data) => {
+                        data.inSync = true;
+                        commit('SET_PROJECTS_MODEL', data);
+                    });
+            }
         }
     },
     getters: {
@@ -70,6 +90,9 @@ export default new Vuex.Store({
         },
         profileTasksModel: state => {
             return state.profileTasksModel;
+        },
+        projectsModel: state => {
+            return state.projectsModel;
         }
     }
 });

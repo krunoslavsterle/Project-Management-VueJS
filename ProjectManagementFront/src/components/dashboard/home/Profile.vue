@@ -2,7 +2,7 @@
     <div class="col-md-3">
             <div class="widget">
                 <div class="block block-profile">
-                    <img class="img-avatar" :src="profileModel.profileImage">
+                    <img class="img-avatar img-lg" :src="profileModel.profileImage">
                     <h3>{{ profileModel.userName }}</h3>
                 </div>
 

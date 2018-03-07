@@ -27,7 +27,7 @@ export default class HomeService {
     };
 
     getProfileTasksModel() {
-        console.log('Getting ProfileTasksModel frmo API...');
+        console.log('Getting ProfileTasksModel from API...');
 
         const mock = this.getMockProfileTasksModel();
         return new Promise(function(resolve, reject) {
@@ -36,7 +36,33 @@ export default class HomeService {
                 resolve(mock);
             }, 800);
         });   
+    };
+
+    getProjectsModel() {
+        console.log('Getting ProjectsModel from API...');
+        
+        const mock = this.getMockProjectsModel();
+        return new Promise(function(resolve, reject) {
+            setTimeout(() => {
+                console.log('ProjectsModel fetched.');
+                resolve(mock);
+            }, 400);
+        });   
+    };
+
+    getUsersModel() {
+        console.log('Getting UsersModel from API...');
+
+        const mock = this.getMockUsersModel();
+        return new Promise(function(resolve, reject) {
+            setTimeout(() => {
+                console.log('UsersModel fetched.');
+                resolve(mock);
+            }, 200);
+        });
     }
+
+    // MOCK DATA.
     
     getMockProfileModel() {
         const profileModel = {
@@ -133,4 +159,87 @@ export default class HomeService {
 
         return tasks;
     };
+
+    getMockProjectsModel() {
+        const projects = [
+            {
+                id: 1,
+                name: 'Project1',                
+                numberOfTasks: 21,
+                numberOfCompletedTasks: 4,
+                numberOfLateTasks: 2,
+                users: [
+                    {
+                        userName: 'ksterle44',
+                        profileImage: 'https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg'
+                    },
+                    {
+                        userName: 'ksterle66',
+                        profileImage: 'https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg'
+                    }
+                ]
+            },
+            {
+                id: 2,                
+                name: 'Project2',
+                numberOfTasks: 26,
+                numberOfCompletedTasks: 4,
+                numberOfLateTasks: 0,
+                users: [
+                    {
+                        userName: 'ksterle44',
+                        profileImage: 'https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg'
+                    }
+                ]
+            },
+            {
+                id: 3,
+                name: 'Project3',
+                numberOfTasks: 56,
+                numberOfCompletedTasks: 4,
+                numberOfLateTasks: 10,
+                users: [
+                    {
+                        userName: 'ksterle44',
+                        profileImage: 'https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg'
+                    },
+                    {
+                        userName: 'ksterle4',
+                        profileImage: 'https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg'
+                    },
+                    {
+                        userName: 'ksterle14',
+                        profileImage: 'https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg'
+                    }
+                ]
+            }
+        ];
+
+        return projects;
+    };
+
+    getMockUsersModel() {
+        const users = [
+            {
+                userName: 'ksterle1',
+                userRole: 'Project Manager',
+                email: 'ksterle@mail.com',
+                profileImage: 'https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg'
+            },
+            {
+                userName: 'ksterle2',
+                userRole: 'Developer',
+                email: 'ksterle2@mail.com',
+                profileImage: 'https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg'
+            },
+            {
+                userName: 'ksterle1',
+                userRole: 'Designer',
+                email: 'ksterle3@mail.com',
+                profileImage: 'https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg'
+            }
+        ];
+
+        return users;
+    }
 }
