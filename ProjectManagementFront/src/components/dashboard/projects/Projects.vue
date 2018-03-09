@@ -10,9 +10,7 @@
     export default {   
         computed: {
             projectList() {
-                const pm = this.$store.getters.projectsModel;
-                console.log(pm);
-                return pm;
+                return this.$store.getters.projectsModel;
             }
         },  
         components: {

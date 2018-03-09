@@ -221,21 +221,31 @@ export default class HomeService {
     getMockUsersModel() {
         const users = [
             {
+                id: 1,
                 userName: 'ksterle1',
                 userRole: 'Project Manager',
                 email: 'ksterle@mail.com',
                 profileImage: 'https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg'
             },
             {
+                id: 2,
                 userName: 'ksterle2',
                 userRole: 'Developer',
                 email: 'ksterle2@mail.com',
                 profileImage: 'https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg'
             },
             {
-                userName: 'ksterle1',
+                id: 3,
+                userName: 'ksterle3',
                 userRole: 'Designer',
                 email: 'ksterle3@mail.com',
+                profileImage: 'https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg'
+            },
+            {
+                id: 4,
+                userName: 'ksterle4',
+                userRole: 'Client',
+                email: 'ksterle4@mail.com',
                 profileImage: 'https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg'
             }
         ];

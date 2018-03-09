@@ -79,6 +79,18 @@ export default new Vuex.Store({
                         commit('SET_PROJECTS_MODEL', data);
                     });
             }
+        },
+        refreshUsersModel({commit, state}) {
+            console.log('Refreshing UsersModel');
+
+            // Check if there is UsersModel and it is in sync.
+            if (!state.usersModel || !state.usersModel.inSync) {
+                homeService.getUsersModel()
+                    .then((data) => {
+                        data.inSync = true;
+                        commit('SET_USERS_MODEL', data);
+                    });
+            }
         }
     },
     getters: {
@@ -93,6 +105,9 @@ export default new Vuex.Store({
         },
         projectsModel: state => {
             return state.projectsModel;
+        },
+        usersModel: state => {
+            return state.usersModel;
         }
     }
 });
